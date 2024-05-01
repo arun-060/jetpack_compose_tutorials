@@ -29,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.test1.R
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun GoogleButton (
 //    text: String = "Sign up with Google",

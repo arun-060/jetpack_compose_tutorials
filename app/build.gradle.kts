@@ -71,4 +71,5 @@ dependencies {
 //    implementation(libs.coil.compose)
 //    implementation("com.google.accompanist:accompanist-coil:latest.version")
     implementation("io.coil-kt:coil-compose:1.3.1")
+    implementation(libs.androidx.navigation.compose)
 }

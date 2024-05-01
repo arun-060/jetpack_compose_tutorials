@@ -46,6 +46,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
+import com.example.test1.AnimatedSplashScreen.SetupNavGraph
 import com.example.test1.ui.theme.Test1Theme
 import com.example.test1.ui.theme.new_color
 
@@ -55,13 +57,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Test1Theme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-//                    AuthScreen()
-                    ExpandableCard()
-                }
+                val navController = rememberNavController()
+                SetupNavGraph(navController = navController)
             }
         }
     }
