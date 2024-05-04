@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -30,6 +31,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,6 +43,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -48,6 +51,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import com.example.test1.AnimatedSplashScreen.SetupNavGraph
+import com.example.test1.common.customComponent.CustomComponent
 import com.example.test1.ui.theme.Test1Theme
 import com.example.test1.ui.theme.new_color
 
@@ -57,8 +61,32 @@ class MainActivity : ComponentActivity() {
         setContent {
             Test1Theme {
                 // A surface container using the 'background' color from the theme
-                val navController = rememberNavController()
-                SetupNavGraph(navController = navController)
+//                val navController = rememberNavController()
+//                SetupNavGraph(navController = navController)
+                
+                Column (
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    var value by remember { mutableStateOf(0) }
+                    
+                    CustomComponent(
+                        indicatorValue = value
+                    )
+                    TextField(
+                        value = value.toString(),
+                        onValueChange = {
+                            value = if (it.isNotEmpty()) {
+                                it.toInt()
+                            } else {
+                                0
+                            }
+                        },
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
+                        )
+                    )
+                }
             }
         }
     }
